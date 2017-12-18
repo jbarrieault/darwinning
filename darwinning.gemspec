@@ -3,6 +3,7 @@ require "./lib/darwinning/version"
 Gem::Specification.new do |s|
 	s.name = 'darwinning'
 	s.version = Darwinning::VERSION
+	s.required_ruby_version = '>= 2.0'
 
 	s.authors = ['Dave Schwantes']
 	s.email = 'dave.schwantes@gmail.com'

@@ -27,6 +27,12 @@ describe Darwinning::Population do
     expect(pop_triple.members).not_to eq old_members
   end
 
+  it "passes itself to each member" do
+    expect(pop_triple.members.all? { |m| m.population == pop_triple }).to be
+    pop_triple.make_next_generation!
+    expect(pop_triple.members.all? { |m| m.population == pop_triple }).to be
+  end
+
   describe "#make_next_generation!" do
     context "with a specified odd-number for population size" do
       it "does not change the member count" do

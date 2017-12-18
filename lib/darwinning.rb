@@ -10,6 +10,8 @@ require_relative 'darwinning/monkey_patch'
 module Darwinning
   extend Config
 
+  attr_accessor :population
+
   def self.included(base)
     def base.genes
       gene_ranges.map { |k,v| Gene.new(name: k, value_range: v) }

@@ -127,6 +127,7 @@ module Darwinning
 
     def build_member
       member = organism.new
+      member.population = self
       unless member.class < Darwinning::Organism
         member.class.genes.each do |gene|
           gene_expression = gene.express
@@ -184,7 +185,7 @@ module Darwinning
     def apply_pairwise_evolutions(m1, m2)
       evolution_types.inject([m1, m2]) do |ret, evolution_type|
         if evolution_type.pairwise?
-          evolution_type.evolve(*ret)
+          evolution_type.evolve(*ret, self)
         else
           ret
         end

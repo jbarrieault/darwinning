@@ -29,12 +29,13 @@ module Darwinning
   class Organism
     include ClassLevelInheritableAttributes
     inheritable_attributes :genes, :name
-    attr_accessor :genotypes, :fitness, :name, :genes
+    attr_accessor :fitness, :genes, :genotypes, :name, :population
 
     @genes = []  # Gene instances
     @name = ""
 
-    def initialize(genotypes = {})
+    def initialize(genotypes = {}, population: nil)
+      @population = population
       if genotypes == {}
         # fill genotypes with expressed Genes
         @genotypes = {}
